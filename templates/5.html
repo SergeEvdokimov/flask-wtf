@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<img src={{url_pic}} alt="здесь должна была быть картинка, но не нашлась"><h1>Аварийный доступ</h1>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+        {{ form.id_astronaut.label }}<br>
+        {{ form.id_astronaut(class="form-control") }}<br>
+        {% for error in form.id_astronaut.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+        {{ form.password_astr.label }}<br>
+        {{ form.password_astr(class="form-control", type="password") }}<br>
+        {% for error in form.password_astr.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+
+        {{ form.id_captain.label }}<br>
+        {{ form.id_captain(class="form-control") }}<br>
+        {% for error in form.id_captain.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+        {{ form.password_captain.label }}<br>
+        {{ form.password_captain(class="form-control", type="password") }}<br>
+        {% for error in form.password_captain.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+{% endblock %}

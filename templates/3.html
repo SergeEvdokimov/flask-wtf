@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <h1>Миссия Колонизация Марса</h1>
+        <a class="navbar-brand" href="#">Mars One</a>
+    </nav>
+    <h4>И на Марсе будут яблони цвести!</h4>
+</header>
+{% set profs = ['инженер-исследователь', 'пилот', 'строитель', 'экобиолог', 'врач',
+'инженер по терраформированию', 'климатолог', 'специалист по радиационной защите', 'астрогеолог', 'гляциолог',
+'инженер жизнеобеспечения', 'метеоролог', 'оператов марсохода', 'киберинженер', 'штурман', 'пилот дронов'] %}
+<main role="main" class="container">
+    <h1>Список профессий</h1>
+    {% for item in profs %}
+        {% if tp == 'ol' %}
+            <div>{{loop.index}}. {{ item }}</div>
+        {% else %}
+           <div>* {{ item }}</div>
+        {% endif %}
+    {% endfor %}
+</main>
+</body>
+</html>
