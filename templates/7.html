@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{url_style}}" />
+    <table>
+        <tr>
+            <td BGCOLOR="#C0C0C0" style="text-align: center; vertical-align: middle;">Цвет стен</td>
+            <td BGCOLOR="#C0C0C0" style="text-align: center; vertical-align: middle;">Эмблема</td>
+        </tr>
+        <tr>
+            <td BGCOLOR={{color}}></td>
+            <td><img src={{pic}} alt="здесь должна была быть картинка, но не нашлась" height="300" width="300"></td>
+        </tr>
+    </table>
+{% endblock %}
