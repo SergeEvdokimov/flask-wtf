@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% set data = js|random %}
+    {% set pic = "static/img/astronauts/" + data['photo']%}
+    <h2>{{data['name']}} {{data['surname']}}</h2>
+    <img src={{pic}} width="400" height="400">
+    <h3>{{data['profs']|sort|join(', ')}}</h3>
+
+{% endblock %}
