@@ -1,7 +1,11 @@
 from flask import *
 import json
+import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+upload_folder = os.path.join('static', 'img')
+app.config['UPLOAD'] = upload_folder
 
 
 @app.route('/')
@@ -371,14 +375,14 @@ def carousel():
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-          <body>
+          </body>
         </html>'''
 
 
 @app.route('/load_photo', methods=['GET', 'POST'])
 def load_photo():
     if request.method == 'GET':
-        return render_template("9.html")
+        return render_template("8.html")
     elif request.method == 'POST':
         return "Форма отправлена"
 
@@ -388,6 +392,20 @@ def show_member():
     with open('templates/members.json', encoding='utf-8') as file:
         js = json.load(file)
     return render_template("8.html", js=js['members'])
+
+
+@app.route('/galery', methods=['GET', 'POST'])
+def galery():
+    return render_template("9.html", pictures=[i for i in os.listdir('static\img') if i != 'astronauts'])
+
+
+@app.route('/upload_file', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['img']
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD'], filename))
+    return render_template("9.html", pictures=[i for i in os.listdir('static\img') if i != 'astronauts'])
 
 
 if __name__ == '__main__':
